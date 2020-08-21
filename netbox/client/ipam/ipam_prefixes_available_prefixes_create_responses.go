@@ -38,40 +38,40 @@ type IpamPrefixesAvailablePrefixesCreateReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *IpamPrefixesAvailablePrefixesCreateReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-	case 200:
-		result := NewIpamPrefixesAvailablePrefixesCreateOK()
+	case 201:
+		result := NewIpamPrefixesAvailablePrefixesCreateCreated()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
 
 	default:
-		return nil, runtime.NewAPIError("unknown error", response, response.Code())
+		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
 }
 
-// NewIpamPrefixesAvailablePrefixesCreateOK creates a IpamPrefixesAvailablePrefixesCreateOK with default headers values
-func NewIpamPrefixesAvailablePrefixesCreateOK() *IpamPrefixesAvailablePrefixesCreateOK {
-	return &IpamPrefixesAvailablePrefixesCreateOK{}
+// NewIpamPrefixesAvailablePrefixesCreateCreated creates a IpamPrefixesAvailablePrefixesCreateCreated with default headers values
+func NewIpamPrefixesAvailablePrefixesCreateCreated() *IpamPrefixesAvailablePrefixesCreateCreated {
+	return &IpamPrefixesAvailablePrefixesCreateCreated{}
 }
 
-/*IpamPrefixesAvailablePrefixesCreateOK handles this case with default header values.
+/*IpamPrefixesAvailablePrefixesCreateCreated handles this case with default header values.
 
-IpamPrefixesAvailablePrefixesCreateOK ipam prefixes available prefixes create o k
+IpamPrefixesAvailablePrefixesCreateCreated ipam prefixes available prefixes create created
 */
-type IpamPrefixesAvailablePrefixesCreateOK struct {
+type IpamPrefixesAvailablePrefixesCreateCreated struct {
 	Payload []*models.AvailablePrefix
 }
 
-func (o *IpamPrefixesAvailablePrefixesCreateOK) Error() string {
-	return fmt.Sprintf("[POST /ipam/prefixes/{id}/available-prefixes/][%d] ipamPrefixesAvailablePrefixesCreateOK  %+v", 200, o.Payload)
+func (o *IpamPrefixesAvailablePrefixesCreateCreated) Error() string {
+	return fmt.Sprintf("[POST /ipam/prefixes/{id}/available-prefixes/][%d] ipamPrefixesAvailablePrefixesCreateCreated  %+v", 201, o.Payload)
 }
 
-func (o *IpamPrefixesAvailablePrefixesCreateOK) GetPayload() []*models.AvailablePrefix {
+func (o *IpamPrefixesAvailablePrefixesCreateCreated) GetPayload() []*models.AvailablePrefix {
 	return o.Payload
 }
 
-func (o *IpamPrefixesAvailablePrefixesCreateOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *IpamPrefixesAvailablePrefixesCreateCreated) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
